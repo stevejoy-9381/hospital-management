@@ -23,19 +23,18 @@
     <link rel="apple-touch-icon"
         href="{{ $app ? config('app.url') . 'storage/' . $app->favicon_path :  config("app.url").'images/favicon.png' }}">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ config('app.url') }}css/bootstrap.min.css">
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="{{  config('app.url') }}css/style.css">
-    <!-- Colors CSS -->
-    <link rel="stylesheet" href="{{  config('app.url') }}css/colors.css">
-    <!-- ALL VERSION CSS -->
-    <link rel="stylesheet" href="{{  config('app.url') }}css/versions.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/colors.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/versions.css') }}">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="{{  config('app.url') }}css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{  config('app.url') }}css/custom.css">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <!-- Modernizer for Portfolio -->
-    <script src="js/modernizer.js"></script>
+    <script src="{{ asset('js/modernizer.js') }}"></script>
     <!-- [if lt IE 9] -->
     @livewireStyles
     @livewireScripts
