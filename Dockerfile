@@ -3,14 +3,12 @@ FROM php:8.2-cli
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies + PostgreSQL + Node.js
+# Install system dependencies + PostgreSQL
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
     curl \
     zip \
-    nodejs \
-    npm \
     libzip-dev \
     libpng-dev \
     libonig-dev \
@@ -29,14 +27,12 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Install frontend dependencies and build assets
-RUN npm install
-RUN npm run build
-
 # Expose Railway port
 EXPOSE 8000
 
 # Start Laravel
 CMD php artisan storage:link || true && \
+    php artisan config:clear && \
+    php artisan cache:clear && \
     php artisan migrate --force && \
     php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
